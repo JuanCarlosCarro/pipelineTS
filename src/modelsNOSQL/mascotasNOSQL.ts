@@ -12,6 +12,13 @@ const MascotaModel = dynamodb.define('mascota', {
         Tipo: joi.string()
     },
     tableName: `Mascota${PREFIX_NAME}`
+    
 });
+
+dynamodb.createTables((err:any)=>{
+    if(err)
+        return console.log('Error al crear la tabla',err);
+    console.log('Tabla creada exitosamente');
+})
 
 export default MascotaModel;

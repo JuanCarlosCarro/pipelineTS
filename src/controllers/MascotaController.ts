@@ -34,11 +34,11 @@ class MascotaController extends AbstractController {
         }
     }
 
-    private async getConsultarMascotas(req: Request, res: Response) {
+    private async getConsultarMascotas(_: Request, res: Response) {
         try {
             console.log("Consultar mascotas");
             const mascotas = await MascotaModel.scan().exec().promise();
-            res.status(200).json(mascotas.Items);
+            res.status(200).json(mascotas[0].Items);
         } catch (err) {
             console.log(err);
             res.status(500).send('Internal server error' + err);
