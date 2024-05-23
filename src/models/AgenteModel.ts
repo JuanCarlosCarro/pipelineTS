@@ -2,23 +2,15 @@ import {Model,Sequelize} from 'sequelize';
 import AgenteController from '../controllers/AgenteController';
 
 interface AgenteAttributes {
-    awsCognitoId:string;
+    id:number;
     nombre:string;
-    rol:string;
     email:string;
 }
 
-export enum UserRoles{
-    ADMIN = 'ADMIN',
-    SUPERVISOR = "SUPERVISOR",
-    AGENT = "AGENT"
-  }
-
 module.exports = (sequelize:any,DataTypes:any) => {
     class Agente extends Model<AgenteAttributes> implements AgenteAttributes{
-        public awsCognitoId!:string;
+        public id!:number;
         public nombre!:string;
-        public rol!: string;;
         public email!:string;
 
         static associate(models:any){
@@ -27,16 +19,16 @@ module.exports = (sequelize:any,DataTypes:any) => {
 
     }
     Agente.init({
-        awsCognitoId:{
-            type: DataTypes.STRING,
+        id:{
+            type:DataTypes.INTEGER,
             allowNull:false,
-            primaryKey: true
+            primaryKey:true,
+            autoIncrement:true
         },
         nombre:{
             type:DataTypes.STRING,
             allowNull:false
         },
-        rol:DataTypes.STRING,
         email:{
             type:DataTypes.STRING(50),
             allowNull:false

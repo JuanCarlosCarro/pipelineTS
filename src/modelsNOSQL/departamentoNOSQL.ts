@@ -13,5 +13,9 @@ const DepartamentoModel = dynamodb.define('departamento',{
     tableName:`Departamento${PREFIX_NAME}`
 });
 
-
+/*dynamodb.createTables((err)=>{
+    if(err)
+        return console.log(err);
+    console.log('Tabla creada exitosamente')
+})*/
 export default DepartamentoModel;
