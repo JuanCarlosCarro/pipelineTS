@@ -1,14 +1,14 @@
 import {Model, Sequelize } from 'sequelize';
 
 interface ClienteAttributes {
-    clienteId: string;
+    clienteId: number;
     nombre: string;
     email: string;
     telefono: string;
 }
 module.exports = (sequelize: any, DataTypes: any) => {
     class Cliente extends Model<ClienteAttributes> implements ClienteAttributes {
-        public clienteId!: string;
+        public clienteId!: number;
         public nombre!: string;
         public email!: string;
         public telefono!: string;
@@ -18,29 +18,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
     Cliente.init({
         clienteId: {
-            type:DataTypes.STRING,
-            allowNull: false,
-            primaryKey: true,
-        },
-        nombre: {
-            type:DataTypes.STRING,
-            allowNull: false
-        },
-        email: {
-            type:DataTypes.STRING,
-            allowNull: false
-        },
-        telefono: {
-            type:DataTypes.STRING,
-            allowNull: false
-        }
-    }, {
-        sequelize,
-        modelName: 'Cliente'
-    });
-    Cliente.init({
-        clienteId: {
-            type:DataTypes.STRING,
+            type:DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement:true
