@@ -6,7 +6,7 @@ interface ClienteAttributes {
     email: string;
     telefono: string;
 }
-module.exports = (sequelize: Sequelize, DataTypes: any) => {
+module.exports = (sequelize: any, DataTypes: any) => {
     class Cliente extends Model<ClienteAttributes> implements ClienteAttributes {
         public clienteId!: string;
         public nombre!: string;
@@ -21,7 +21,6 @@ module.exports = (sequelize: Sequelize, DataTypes: any) => {
             type:DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
-            autoIncrement:true
         },
         nombre: {
             type:DataTypes.STRING,
